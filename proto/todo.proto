@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package todo;
+option go_package = "todo-grpc/proto";
+
+service TodoService {
+    rpc CreateTask (Task) returns (Task) {}
+    rpc ListTasks (Empty) returns (stream Task) {}
+}
+
+message Task {
+    string id = 1;
+    string title = 2;
+    string description = 3;
+    bool completed = 4;
+    int64 created_at = 5;
+}
+
+message Empty {} 
